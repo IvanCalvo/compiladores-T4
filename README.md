@@ -8,7 +8,7 @@
 
 ## Programas necessários
 
-  O código foi escrito na linguagem *Java* utilizando também o *Maven*, e também foi utilizado o *ANTLR 4.12.0*. Os arquivos e instruções para *downloads* e instalações podem ser encontrados nos seguintes endereços:  
+  O código foi escrito na linguagem *Java* utilizando também o *Maven*, e também foi utilizado o *ANTLR 4.11.1*. Os arquivos e instruções para *downloads* e instalações podem ser encontrados nos seguintes endereços:  
   https://www.antlr.org/download.html
     
 ## Compilação e execução do programa
