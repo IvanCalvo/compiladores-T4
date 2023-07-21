@@ -11,8 +11,6 @@ import java.util.ArrayList;
 
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import com.ibm.icu.impl.UResource.TabelaDeSimbolos;
-
 import compiladores.AlgumaParser.CmdAtribuicaoContext;
 import compiladores.AlgumaParser.Tipo_basico_identContext;
 import compiladores.AlgumaParser.VariavelContext;
