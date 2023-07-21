@@ -205,17 +205,7 @@ public class AlgumaSemanticoUtils {
             return verificar(escopos, ctx.identificador());
         }
         if (ctx.IDENT() != null) {
-            TabelaDeSimbolos.TipoAlguma ret = null;
-            ret = verificar(escopos, ctx.IDENT().getText());
-            for (ExpressaoContext fa : ctx.expressao()) {
-                TabelaDeSimbolos.TipoAlguma aux = verificar(escopos, fa);
-                if (ret == null) {
-                    ret = aux;
-                } else if (ret != aux && aux != TabelaDeSimbolos.TipoAlguma.INVALIDO) {
-                    ret = TabelaDeSimbolos.TipoAlguma.INVALIDO;
-                }
-            }
-            return ret;
+            return verificar(escopos, ctx.IDENT().getText());
         } else {
             TabelaDeSimbolos.TipoAlguma ret = null;
             for (ExpressaoContext fa : ctx.expressao()) {
@@ -229,12 +219,15 @@ public class AlgumaSemanticoUtils {
             return ret;
         }
     }
-    
+
     public static TabelaDeSimbolos.TipoAlguma verificar(Escopos escopos, String nomeVar) {
-        TabelaDeSimbolos.TipoAlguma type = null;
+        TabelaDeSimbolos.TipoAlguma type = TabelaDeSimbolos.TipoAlguma.INVALIDO;
         for(TabelaDeSimbolos tabela : escopos.percorrerEscoposAninhados()){
-            type = tabela.verificar(nomeVar);
+            if(tabela.existe(nomeVar)){
+                return tabela.verificar(nomeVar);
+            }
         }
+
         return type;
     }
 
