@@ -14,7 +14,6 @@ import java.util.List;
 
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-
 import compiladores.AlgumaParser.CmdAtribuicaoContext;
 import compiladores.AlgumaParser.CmdRetorneContext;
 import compiladores.AlgumaParser.Tipo_basico_identContext;
@@ -98,7 +97,6 @@ public class AlgumaSemantico extends AlgumaBaseVisitor {
         return super.visitDeclaracao_tipo(ctx);
     }
 
-
     //verifica se a variável declarada já foi declarada anteriormente no escopo atual
     @Override
     public Object visitDeclaracao_variavel(Declaracao_variavelContext ctx) {
@@ -162,7 +160,6 @@ public class AlgumaSemantico extends AlgumaBaseVisitor {
                                         + " ja declarado anteriormente");
                             }
                             else{
-                                // SemanticoUtils.adicionarErroSemantico(id.start, "oi rs tamo adicionando " + re.name );
                                 escopoAtual.adicionar(re);
                                 escopoAtual.adicionar(nameVar, re.tipo, TabelaDeSimbolos.Structure.VAR);
                             }
@@ -178,7 +175,7 @@ public class AlgumaSemantico extends AlgumaBaseVisitor {
         return super.visitDeclaracao_variavel(ctx);
     }
 
-    //verifica se a variável global já foi declarada 
+//verifica se a variável global já foi declarada 
     public Object visitDeclaracao_global(Declaracao_globalContext ctx) {
         TabelaDeSimbolos escopoAtual = escopos.obterEscopoAtual();
         Object ret;
