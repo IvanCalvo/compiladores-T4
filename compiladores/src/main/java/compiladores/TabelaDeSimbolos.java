@@ -32,7 +32,7 @@ public class TabelaDeSimbolos {
         String nome;
         Structure structure;
 
-        private EntradaTabelaDeSimbolos(String nome, TipoAlguma tipo, Structure structure) {
+        public EntradaTabelaDeSimbolos(String nome, TipoAlguma tipo, Structure structure) {
             this.tipo = tipo;
             this.nome = nome;
             this.structure = structure;
