@@ -108,27 +108,6 @@ public class AlgumaSemanticoUtils {
     
         return ret;
     }
-
-    public static TabelaDeSimbolos.TipoAlguma getTipo(String val){
-        TabelaDeSimbolos.TipoAlguma tipo = null;
-                switch(val) {
-                    case "literal": 
-                        tipo = TabelaDeSimbolos.TipoAlguma.CADEIA;
-                        break;
-                    case "inteiro": 
-                        tipo = TabelaDeSimbolos.TipoAlguma.INTEIRO;
-                        break;
-                    case "real": 
-                        tipo = TabelaDeSimbolos.TipoAlguma.REAL;
-                        break;
-                    case "logico": 
-                        tipo = TabelaDeSimbolos.TipoAlguma.LOGICO;
-                        break;
-                    default:
-                        break;
-                }
-        return tipo;
-    }
     
     public static TabelaDeSimbolos.TipoAlguma verificar(Escopos escopos, AlgumaParser.Exp_aritmeticaContext ctx) {
         TabelaDeSimbolos.TipoAlguma ret = null;
