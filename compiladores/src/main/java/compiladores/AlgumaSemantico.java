@@ -162,7 +162,6 @@ public class AlgumaSemantico extends AlgumaBaseVisitor {
                                         + " ja declarado anteriormente");
                             }
                             else{
-                                // SemanticoUtils.adicionarErroSemantico(id.start, "oi rs tamo adicionando " + re.name );
                                 escopoAtual.adicionar(re);
                                 escopoAtual.adicionar(nameVar, re.tipo, TabelaDeSimbolos.Structure.VAR);
                             }
