@@ -8,6 +8,7 @@ import compiladores.AlgumaParser.ProgramaContext;
 import compiladores.AlgumaParser.IdentificadorContext;
 import compiladores.AlgumaParser.CmdAtribuicaoContext;
 import compiladores.AlgumaParser.Tipo_basico_identContext;
+import compiladores.TabelaDeSimbolos;
 
 public class AlgumaSemantico extends AlgumaBaseVisitor {
     
@@ -52,13 +53,16 @@ public class AlgumaSemantico extends AlgumaBaseVisitor {
     @Override
     public Object visitDeclaracao_tipo(Declaracao_tipoContext ctx) {
         TabelaDeSimbolos escopoAtual = escopos.obterEscopoAtual();
+
         if (escopoAtual.existe(ctx.IDENT().getText())) {
              AlgumaSemanticoUtils.adicionarErroSemantico(ctx.start, "tipo " + ctx.IDENT().getText()
                     + " declarado duas vezes num mesmo escopo");
         } else {
-            escopoAtual.adicionar(ctx.IDENT().getText(), TabelaDeSimbolos.TipoAlguma.TIPO);
+            TabelaDeSimbolos.TipoAlguma tipo = AlgumaSemanticoUtils.getTipo(ctx.tipo().getText());
+
+
         }
-        return super.visitDeclaracao_tipo(ctx);
+        
     }
 
     //verifica se a variável declarada já foi declarada anteriormente no escopo atual
