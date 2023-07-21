@@ -7,13 +7,13 @@ public class Escopos {
 
     private LinkedList<TabelaDeSimbolos> pilhaDeTabelas;
 
-    public Escopos() {
+    public Escopos(TabelaDeSimbolos.TipoAlguma tipo) {
         pilhaDeTabelas = new LinkedList<>();
-        criarNovoEscopo();
+        criarNovoEscopo(tipo);
     }
 
-    public void criarNovoEscopo() {
-        pilhaDeTabelas.push(new TabelaDeSimbolos());
+    public void criarNovoEscopo(TabelaDeSimbolos.TipoAlguma tipo) {
+        pilhaDeTabelas.push(new TabelaDeSimbolos(tipo));
     }
 
     public TabelaDeSimbolos obterEscopoAtual() {
@@ -27,4 +27,13 @@ public class Escopos {
     public void abandonarEscopo() {
         pilhaDeTabelas.pop();
     }
+
+    public boolean existeIdent(String nome) {
+        for(TabelaDeSimbolos escopo : pilhaDeTabelas) {
+            if(!escopo.existe(nome)) {
+                return true;
+            }
+        }
+        return false;
+    }   
 }
