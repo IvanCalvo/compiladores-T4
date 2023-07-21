@@ -76,4 +76,8 @@ public class TabelaDeSimbolos {
             tipoTabela.put(tipoNome, list);
         }
     }
+
+    public ArrayList<EntradaTabelaDeSimbolos> retornaTipo(String nome){
+        return tipoTabela.get(nome);
+    }
 }
