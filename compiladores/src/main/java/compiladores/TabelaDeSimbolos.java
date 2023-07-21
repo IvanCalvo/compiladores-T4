@@ -1,31 +1,47 @@
 package compiladores;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.antlr.v4.parse.ANTLRParser.element_return;
+
 public class TabelaDeSimbolos {
 
+    public TabelaDeSimbolos.TipoAlguma tipo;
     public enum TipoAlguma {
         INTEIRO,
         REAL,
         CADEIA,
         LOGICO,
         INVALIDO,
-        TIPO, 
-        IDENT
+        REG,
+        VOID
+    }
+
+    public enum Structure {
+        VAR, 
+        CONST, 
+        PROC, 
+        FUNC, 
+        TIPO
     }
     
     class EntradaTabelaDeSimbolos {
         TipoAlguma tipo;
         String nome;
+        Structure structure;
 
-        private EntradaTabelaDeSimbolos(String nome, TipoAlguma tipo) {
+        private EntradaTabelaDeSimbolos(String nome, TipoAlguma tipo, Structure structure) {
             this.tipo = tipo;
             this.nome = nome;
+            this.structure = structure;
         }
     }
     
     private final Map<String, EntradaTabelaDeSimbolos> tabela;
+    private final Map<String, ArrayList<EntradaTabelaDeSimbolos>> tipoTabela; 
+
     
      public boolean existe(String nome) {
         return tabela.containsKey(nome);
@@ -35,13 +51,29 @@ public class TabelaDeSimbolos {
         return tabela.get(nome).tipo;
     }
     
-    public TabelaDeSimbolos() {
+    public TabelaDeSimbolos(TabelaDeSimbolos.TipoAlguma tipo) {
         this.tabela = new HashMap<>();
+        this.tipoTabela = new HashMap<>();
+        this.tipo = tipo;
+
     }
     
-    public void adicionar(String nome, TipoAlguma tipo) {
-        tabela.put(nome, new EntradaTabelaDeSimbolos(nome, tipo));
+    public void adicionar(String nome, TipoAlguma tipo, Structure structure){
+        EntradaTabelaDeSimbolos entrada = new EntradaTabelaDeSimbolos(nome, tipo, structure);
+        tabela.put(nome, entrada);
     }
-    
-   
+
+    public void adicionar(EntradaTabelaDeSimbolos entrada) {
+        tabela.put(entrada.nome, entrada);
+    }
+
+    public void adicionar(String tipoNome, EntradaTabelaDeSimbolos entrada){
+        if(tipoTabela.containsKey(tipoNome)){
+            tipoTabela.get(tipoNome).add(entrada);
+        }else{
+            ArrayList<EntradaTabelaDeSimbolos> list = new ArrayList<>();
+            list.add(entrada);
+            tipoTabela.put(tipoNome, list);
+        }
+    }
 }
