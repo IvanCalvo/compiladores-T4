@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.antlr.v4.runtime.Token;
 
+import com.ibm.icu.impl.UResource.Table;
+
 import compiladores.AlgumaParser.Exp_aritmeticaContext;
 import compiladores.AlgumaParser.ExpressaoContext;
 import compiladores.AlgumaParser.FatorContext;
@@ -12,6 +14,7 @@ import compiladores.AlgumaParser.Fator_logicoContext;
 import compiladores.AlgumaParser.ParcelaContext;
 import compiladores.AlgumaParser.TermoContext;
 import compiladores.AlgumaParser.Termo_logicoContext;
+import compiladores.TabelaDeSimbolos.TipoAlguma;
 
 public class AlgumaSemanticoUtils {
     // Lista que armazena mensagens de erros semânticos
@@ -233,5 +236,26 @@ public class AlgumaSemanticoUtils {
             type = tabela.verificar(nomeVar);
         }
         return type;
+    }
+
+    public static TabelaDeSimbolos.TipoAlguma getTipo(String val){
+        TabelaDeSimbolos.TipoAlguma tipo = null;
+                switch(val) {
+                    case "literal": 
+                        tipo = TabelaDeSimbolos.TipoAlguma.CADEIA;
+                        break;
+                    case "inteiro": 
+                        tipo = TabelaDeSimbolos.TipoAlguma.INTEIRO;
+                        break;
+                    case "real": 
+                        tipo = TabelaDeSimbolos.TipoAlguma.REAL;
+                        break;
+                    case "logico": 
+                        tipo = TabelaDeSimbolos.TipoAlguma.LOGICO;
+                        break;
+                    default:
+                        break;
+                }
+        return tipo;
     }
 }
