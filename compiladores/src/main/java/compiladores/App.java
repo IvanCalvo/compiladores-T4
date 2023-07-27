@@ -26,7 +26,7 @@ public class App {
             CharStream c = CharStreams.fromFileName(args[0]);//entrada
             AlgumaLexer lex = new AlgumaLexer(c);
             CommonTokenStream cs = new CommonTokenStream(lex); //conversão para token stream
-            AlgumaParser parser = new AlgumaParser(cs);
+            AlgumaParser parser = new AlgumaParser(cs);            
             AlgumaParser.ProgramaContext arvore = parser.programa();   
             AlgumaSemantico as = new AlgumaSemantico();  
             as.visitPrograma(arvore);
@@ -36,7 +36,7 @@ public class App {
             p.println("Fim da compilacao");
             p.close();
         } catch (Exception e) {
-            System.err.println(e);
+            e.printStackTrace();
         }
         
     }
