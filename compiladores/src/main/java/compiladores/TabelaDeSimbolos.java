@@ -2,12 +2,12 @@ package compiladores;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class TabelaDeSimbolos {
 
     public TabelaDeSimbolos.TipoAlguma tipo;
-
     public enum TipoAlguma {
         INTEIRO,
         REAL,
@@ -38,10 +38,11 @@ public class TabelaDeSimbolos {
         }
     }
     
-    private HashMap<String, EntradaTabelaDeSimbolos> tabela;
-    private HashMap<String, ArrayList<EntradaTabelaDeSimbolos>> tipoTabela; 
- 
-    public boolean existe(String nome) {
+    private final Map<String, EntradaTabelaDeSimbolos> tabela;
+    private final Map<String, ArrayList<EntradaTabelaDeSimbolos>> tipoTabela; 
+
+    
+     public boolean existe(String nome) {
         return tabela.containsKey(nome);
     }
     
@@ -50,8 +51,8 @@ public class TabelaDeSimbolos {
     }
     
     public TabelaDeSimbolos(TabelaDeSimbolos.TipoAlguma tipo) {
-        tabela = new HashMap<>();
-        tipoTabela = new HashMap<>();
+        this.tabela = new HashMap<>();
+        this.tipoTabela = new HashMap<>();
         this.tipo = tipo;
 
     }
