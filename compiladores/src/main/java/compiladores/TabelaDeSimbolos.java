@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.antlr.v4.parse.ANTLRParser.element_return;
 
 public class TabelaDeSimbolos {
 

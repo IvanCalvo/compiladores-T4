@@ -20,7 +20,6 @@ import compiladores.AlgumaParser.CmdRetorneContext;
 import compiladores.AlgumaParser.Tipo_basico_identContext;
 import compiladores.AlgumaParser.VariavelContext;
 import compiladores.TabelaDeSimbolos.EntradaTabelaDeSimbolos;
-import compiladores.TabelaDeSimbolos;
 
 public class AlgumaSemantico extends AlgumaBaseVisitor {
     
